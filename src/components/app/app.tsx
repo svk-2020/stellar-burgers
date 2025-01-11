@@ -88,6 +88,7 @@ const App = () => {
             </ProtectedRoute>
           }
         />
+        <Route path='/ingredients/:id' element={<IngredientDetails />} />
       </Routes>
       {backgroundLocation && (
         <Routes>
