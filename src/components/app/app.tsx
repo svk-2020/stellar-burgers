@@ -16,7 +16,8 @@ import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import { AppHeader, IngredientDetails, Modal, OrderInfo } from '@components';
 import { ProtectedRoute } from '../protected-route/protected-route';
 import { useDispatch } from '../../services/store';
-//import { useEffect } from 'react';
+import { getIngredients } from '../../slices/ingredientsSlice';
+import { useEffect } from 'react';
 
 const App = () => {
   const location = useLocation();
@@ -28,9 +29,9 @@ const App = () => {
     navigate(-1);
   };
 
-  // useEffect(() => {
-  //   dispatch();
-  // } []);
+  useEffect(() => {
+    dispatch(getIngredients());
+  }, []);
 
   return (
     <div className={styles.app}>
