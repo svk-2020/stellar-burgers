@@ -27,6 +27,11 @@ const constructorSlice = createSlice({
         const id = nanoid();
         return { payload: { ...ingredient, id } };
       }
+    },
+    removeIngredient: (state, action: PayloadAction<string>) => {
+      state.ingredients = state.ingredients.filter(
+        (i) => i.id !== action.payload
+      );
     }
   },
   selectors: {
@@ -35,5 +40,5 @@ const constructorSlice = createSlice({
 });
 
 export const constructorBurgersReducer = constructorSlice.reducer;
-export const { addIngredient } = constructorSlice.actions;
+export const { addIngredient, removeIngredient } = constructorSlice.actions;
 export const { selectConstructorBurgers } = constructorSlice.selectors;
