@@ -32,6 +32,13 @@ const constructorSlice = createSlice({
       state.ingredients = state.ingredients.filter(
         (i) => i.id !== action.payload
       );
+    },
+    moveIngredient: (state, action) => {
+      const item = state.ingredients[action.payload.startPosition];
+      state.ingredients[action.payload.startPosition] =
+        state.ingredients[action.payload.startPosition + action.payload.shift];
+      state.ingredients[action.payload.startPosition + action.payload.shift] =
+        item;
     }
   },
   selectors: {
@@ -40,5 +47,6 @@ const constructorSlice = createSlice({
 });
 
 export const constructorBurgersReducer = constructorSlice.reducer;
-export const { addIngredient, removeIngredient } = constructorSlice.actions;
+export const { addIngredient, removeIngredient, moveIngredient } =
+  constructorSlice.actions;
 export const { selectConstructorBurgers } = constructorSlice.selectors;
