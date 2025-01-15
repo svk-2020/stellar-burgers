@@ -89,13 +89,17 @@ const App = () => {
           }
         />
         <Route path='/ingredients/:id' element={<IngredientDetails />} />
+        <Route path='/feed/:number' element={<OrderInfo />} />
       </Routes>
       {backgroundLocation && (
         <Routes>
           <Route
             path='/feed/:number'
             element={
-              <Modal title={'title=feed/:number'} onClose={handleOnClose}>
+              <Modal
+                title={`#${location.pathname.match(/\d+/)}`}
+                onClose={handleOnClose}
+              >
                 <OrderInfo />
               </Modal>
             }
