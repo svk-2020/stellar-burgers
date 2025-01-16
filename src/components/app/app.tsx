@@ -43,7 +43,7 @@ const App = () => {
         <Route
           path='/login'
           element={
-            <ProtectedRoute>
+            <ProtectedRoute isPublicRoute>
               <Login />
             </ProtectedRoute>
           }
@@ -51,7 +51,7 @@ const App = () => {
         <Route
           path='/register'
           element={
-            <ProtectedRoute>
+            <ProtectedRoute isPublicRoute>
               <Register />
             </ProtectedRoute>
           }
@@ -59,7 +59,7 @@ const App = () => {
         <Route
           path='/forgot-password'
           element={
-            <ProtectedRoute>
+            <ProtectedRoute isPublicRoute>
               <ForgotPassword />
             </ProtectedRoute>
           }
@@ -67,7 +67,7 @@ const App = () => {
         <Route
           path='/reset-password'
           element={
-            <ProtectedRoute>
+            <ProtectedRoute isPublicRoute>
               <ResetPassword />
             </ProtectedRoute>
           }
@@ -90,6 +90,14 @@ const App = () => {
         />
         <Route path='/ingredients/:id' element={<IngredientDetails />} />
         <Route path='/feed/:number' element={<OrderInfo />} />
+        <Route
+          path='/profile/orders/:number'
+          element={
+            <ProtectedRoute>
+              <OrderInfo />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
       {backgroundLocation && (
         <Routes>
