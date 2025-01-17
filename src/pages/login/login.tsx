@@ -7,7 +7,6 @@ import { loginUser } from '../../slices/userSlice';
 export const Login: FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   const errorMessage = useSelector((state) => state.user.error);
 

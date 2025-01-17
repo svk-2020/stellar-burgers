@@ -6,7 +6,8 @@ import {
   logoutApi,
   registerUserApi,
   TLoginData,
-  TRegisterData
+  TRegisterData,
+  updateUserApi
 } from '@api';
 import { deleteCookie, setCookie } from '../utils/cookie';
 
@@ -66,6 +67,17 @@ export const logoutUser = createAsyncThunk(
     }
     deleteCookie('accessToken');
     localStorage.clear();
+  }
+);
+
+export const updateUser = createAsyncThunk(
+  'user/updateUser',
+  async (data: Partial<TRegisterData>, { rejectWithValue }) => {
+    const response = await updateUserApi(data);
+    if (!response.success) {
+      return rejectWithValue(response);
+    }
+    return response.user;
   }
 );
 
@@ -132,6 +144,17 @@ export const userSlice = createSlice({
         state.isAuthenticated = false;
         state.loading = false;
         state.userData = null;
+      })
+      .addCase(updateUser.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(updateUser.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message as string;
+      })
+      .addCase(updateUser.fulfilled, (state, action) => {
+        state.loading = false;
+        state.userData = action.payload;
       });
   }
 });
