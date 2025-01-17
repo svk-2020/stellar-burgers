@@ -84,11 +84,7 @@ export const updateUser = createAsyncThunk(
 export const userSlice = createSlice({
   name: 'user',
   initialState,
-  reducers: {
-    authChecked: (state) => {
-      state.isAuthChecked = true;
-    }
-  },
+  reducers: {},
   selectors: {
     selectIsAuthChecked: (state) => state.isAuthChecked,
     selectAuthenticated: (state) => state.isAuthenticated,
@@ -161,6 +157,5 @@ export const userSlice = createSlice({
 });
 
 export const userReducer = userSlice.reducer;
-export const { authChecked } = userSlice.actions;
 export const { selectIsAuthChecked, selectAuthenticated, selectUserData } =
   userSlice.selectors;
