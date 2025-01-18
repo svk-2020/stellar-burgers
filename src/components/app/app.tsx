@@ -16,7 +16,7 @@ import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import { AppHeader, IngredientDetails, Modal, OrderInfo } from '@components';
 import { ProtectedRoute } from '../protected-route/protected-route';
 import { useDispatch } from '../../services/store';
-import { getIngredients } from '../../slices/ingredientsSlice';
+import { getIngredients } from '../../services/slices/ingredientsSlice';
 import { useEffect } from 'react';
 
 const App = () => {
@@ -124,7 +124,7 @@ const App = () => {
             path='/profile/orders/:number'
             element={
               <Modal
-                title={'title=profile/orders/:number'}
+                title={`#${location.pathname.match(/\d+/)}`}
                 onClose={handleOnClose}
               >
                 <ProtectedRoute>

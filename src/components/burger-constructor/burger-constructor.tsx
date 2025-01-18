@@ -5,15 +5,15 @@ import { useDispatch, useSelector } from '../../services/store';
 import {
   clearIngredients,
   selectConstructorBurgers
-} from '../../slices/constructorSlice';
+} from '../../services/slices/constructorSlice';
 import { useNavigate } from 'react-router-dom';
-import { selectAuthenticated } from '../../slices/userSlice';
+import { selectAuthenticated } from '../../services/slices/userSlice';
 import {
   clearOrderData,
   newOrder,
   selectOrderData,
   selectOrderRequest
-} from '../../slices/orderSlice';
+} from '../../services/slices/orderSlice';
 
 export const BurgerConstructor: FC = () => {
   /** TODO_DONE: взять переменные constructorItems, orderRequest и orderModalData из стора */

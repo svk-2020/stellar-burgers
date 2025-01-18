@@ -3,9 +3,12 @@ import { Preloader } from '@ui';
 import { OrderInfoUI } from '@ui';
 import { TIngredient } from '@utils-types';
 import { useDispatch, useSelector } from '../../services/store';
-import { selectIngredients } from '../../slices/ingredientsSlice';
+import { selectIngredients } from '../../services/slices/ingredientsSlice';
 import { useParams } from 'react-router-dom';
-import { getOrderData, selectOrderData } from '../../slices/orderSlice';
+import {
+  getOrderData,
+  selectOrderData
+} from '../../services/slices/orderSlice';
 
 export const OrderInfo: FC = () => {
   /** TODO_DONE: взять переменные orderData и ingredients из стора */
