@@ -18,6 +18,7 @@ import { ProtectedRoute } from '../protected-route/protected-route';
 import { useDispatch } from '../../services/store';
 import { getIngredients } from '../../services/slices/ingredientsSlice';
 import { useEffect } from 'react';
+import { getUser } from '../../services/slices/userSlice';
 
 const App = () => {
   const location = useLocation();
@@ -31,7 +32,8 @@ const App = () => {
 
   useEffect(() => {
     dispatch(getIngredients());
-  }, []);
+    dispatch(getUser());
+  }, [dispatch]);
 
   return (
     <div className={styles.app}>
