@@ -20,8 +20,6 @@ export const ProtectedRoute = ({
   const isAuthChecked = useSelector(selectIsAuthChecked);
   const user = useSelector(selectUserData);
 
-  console.log('user - ', user);
-
   if (!isAuthChecked && user !== null) {
     return <Preloader />;
   }

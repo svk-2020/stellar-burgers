@@ -49,8 +49,6 @@ export const OrderCard: FC<OrderCardProps> = memo(({ order }) => {
 
   if (!orderInfo) return null;
 
-  //console.log('location - ', location);
-
   return (
     <OrderCardUI
       orderInfo={orderInfo}
