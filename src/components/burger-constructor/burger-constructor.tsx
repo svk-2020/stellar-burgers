@@ -23,7 +23,7 @@ export const BurgerConstructor: FC = () => {
 
   const constructorItems = useSelector(selectConstructorBurgers);
   const orderRequest = useSelector(selectOrderRequest);
-  const orderModalData = useSelector(selectOrderData);
+  const orderModalData = useSelector((state) => state.order.orderData);
 
   const onOrderClick = () => {
     if (!constructorItems.bun || orderRequest) return;

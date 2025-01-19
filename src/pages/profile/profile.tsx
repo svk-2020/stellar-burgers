@@ -26,9 +26,6 @@ export const Profile: FC = () => {
     formValue.name !== user?.name ||
     formValue.email !== user?.email ||
     !!formValue.password;
-  console.log('formValue - ', formValue);
-  console.log('user - ', user);
-  console.log('isFormChanged - ', isFormChanged);
 
   const handleSubmit = (e: SyntheticEvent) => {
     e.preventDefault();

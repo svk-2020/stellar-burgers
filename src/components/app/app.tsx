@@ -33,7 +33,7 @@ const App = () => {
   useEffect(() => {
     dispatch(getIngredients());
     dispatch(getUser());
-  }, [dispatch]);
+  }, []);
 
   return (
     <div className={styles.app}>
@@ -90,13 +90,42 @@ const App = () => {
             </ProtectedRoute>
           }
         />
-        <Route path='/ingredients/:id' element={<IngredientDetails />} />
-        <Route path='/feed/:number' element={<OrderInfo />} />
+        <Route
+          path='/ingredients/:id'
+          element={
+            <div className={styles.detailPageWrap}>
+              <p className={`text text_type_main-large ${styles.detailHeader}`}>
+                Детали ингредиента
+              </p>
+              <IngredientDetails />
+            </div>
+          }
+        />
+        <Route
+          path='/feed/:number'
+          element={
+            <div className={styles.detailPageWrap}>
+              <p
+                className={`text text_type_main-medium ${styles.detailHeader}`}
+              >
+                #{location.pathname.match(/\d+/)}
+              </p>
+              <OrderInfo />
+            </div>
+          }
+        />
         <Route
           path='/profile/orders/:number'
           element={
             <ProtectedRoute>
-              <OrderInfo />
+              <div className={styles.detailPageWrap}>
+                <p
+                  className={`text text_type_main-medium ${styles.detailHeader}`}
+                >
+                  #{location.pathname.match(/\d+/)}
+                </p>
+                <OrderInfo />
+              </div>
             </ProtectedRoute>
           }
         />

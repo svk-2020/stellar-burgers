@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from '../../services/store';
 import { selectIngredients } from '../../services/slices/ingredientsSlice';
 import { useParams } from 'react-router-dom';
 import {
+  clearOrderData,
   getOrderData,
   selectOrderData
 } from '../../services/slices/orderSlice';
@@ -17,11 +18,16 @@ export const OrderInfo: FC = () => {
   const ingredients = useSelector(selectIngredients);
   const { number } = useParams<{ number: string }>();
 
+  console.log('orderData - ', orderData);
+
   useEffect(() => {
     if (number) {
       dispatch(getOrderData(+number));
     }
-  }, [dispatch]);
+    return () => {
+      dispatch(clearOrderData());
+    };
+  }, []);
 
   /* Готовим данные для отображения */
   const orderInfo = useMemo(() => {

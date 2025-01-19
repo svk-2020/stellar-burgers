@@ -101,6 +101,8 @@ export const userSlice = createSlice({
       })
       .addCase(getUser.fulfilled, (state, action) => {
         state.loading = false;
+        state.isAuthChecked = true;
+        state.isAuthenticated = true;
         state.userData = action.payload.user;
       })
       .addCase(registerUser.pending, (state) => {
