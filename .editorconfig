@@ -14,3 +14,13 @@ insert_final_newline = true
 charset = utf-8
 indent_style = tab
 indent_size = 2
+
+[*.{ts}]
+charset = utf-8
+indent_style = tab
+indent_size = 2
+
+[*.{tsx}]
+charset = utf-8
+indent_style = tab
+indent_size = 2
